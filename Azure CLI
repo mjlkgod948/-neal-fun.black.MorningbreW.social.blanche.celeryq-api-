@@ -1,0 +1,4 @@
+az redis list-keys [--ids]
+                   [--name]
+                   [--resource-group]
+                   [--subscription]

@@ -1,0 +1,58 @@
+r = redis.Redis(host='localhost', port=6379, 
+r.set('foo', 'bar') # True r.get('foo') # bar 
+
+r.hset('user-session:123', mapping={ 'name': 'John', "surname": 'Smith', "company": 'Redis', "age": 29 }) # True r.hgetall('user-session:123') # {'surname': 'Smith', 'name': 'John', '
+
+from redis.cluster import RedisCluster rc = RedisCluster(host='localhost', port=16379) print(rc.get_nodes()) # [[host=127.0.0.1,port=16379,name=127.0.0.1:16379,server_type=primary,redis_connection=Redis<ConnectionPool<Connection<host=127.0.0.1,port=16379,db=0>>>], ... rc.set('foo', 'bar') # True rc.get('foo') # b'bar'
+
+import redis r = redis.Redis( host="my-redis.cloud.redislabs.com", port=6379, username="default", # use your Redis user. More info https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/ password="secret", # use your Redis password ssl=True, ssl_certfile="./redis_user.crt", ssl_keyfile="./redis_user_private.key", ssl_ca_certs="./redis_ca.pem", ) r.set('foo', 'bar') # True r.get('foo') # b'bar'
+
+
+
+       's
+1) COMMAND <subcommand> [<arg> [value] [opt] ...]. Subcommands are:
+ 2) (no subcommand)
+ 3)     Return details about all Redis commands.
+ 4) COUNT
+ 5)     Return the total number of commands in this Redis server.
+ 6) LIST
+ 7)     Return a list of all commands in this Redis server.
+ 8) INFO [<command-name> ...]
+ 9)     Return details about multiple Redis commands.
+10)     If no command names are given, documentation details for all
+11)     commands are returned.
+12) DOCS [<command-name> ...]
+13)     Return documentation details about multiple Redis commands.
+14)     If no command names are given, documentation details for all
+15)     commands are returned.
+16) GETKEYS <full-command>
+17)     Return the keys from a full Redis command.
+18) GETKEYSANDFLAGS <full-command>
+19)     Return the keys and the access flags from a full Redis command.
+20) HELP
+21)     Print this help.
+
+                _._                                        
+           _.-``__ ''-._                                   
+      _.-``    `.  `_.  ''-._           Redis 7.2.5 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                         
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 12923
+  `-._    `-._  `-./  _.-'    _.-'                         
+ |`-._`-._    `-.__.-'    _.-'_.-'|                        
+ |    `-._`-._        _.-'_.-'    |           https://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'                         
+ |`-._`-._    `-.__.-'    _.-'_.-'|                        
+ |    `-._`-._        _.-'_.-'    |                        
+  `-._    `-._`-.__.-'_.-'    _.-'                         
+      `-._    `-.__.-'    _.-'                             
+          `-._        _.-'                                 
+              `-.__.-'                                     
+
+12923:M 06 Nov 2024 14:28:13.311 # Warning: Could not create server TCP listening socket *:6379: bind: Address already in use
+12923:M 06 Nov 2024 14:28:13.311 # Failed listeni
+"help @<group>" to get a list of commands in <group>
+      "help <command>" for help on <command>
+      "help <tab>" to get a list of possible help topics
+      "quit" to exit
